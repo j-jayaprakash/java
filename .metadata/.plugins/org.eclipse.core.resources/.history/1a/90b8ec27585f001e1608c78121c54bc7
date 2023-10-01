@@ -1,0 +1,31 @@
+package com.jp.ums;
+
+import org.jp.calculator.NumericalUtil;
+
+import com.jp.ums.dto.User;
+
+
+/**
+ * 
+ * jayaprakash
+ * 
+ */
+public class App 
+{
+    public static void main( String[] args )
+
+    {
+    	
+    	User u1 = new User();
+    	
+    	u1.setName("jayaprakash");
+    	u1.setEmail("jayaprakash@gmail.com");
+    	
+    	
+    	
+//    	int res = NumericalUtil.add(10, 2);
+//    	
+//    	System.out.println(res);
+    	
+    }
+}

@@ -1,0 +1,16 @@
+package com.jp.ums.util;
+
+import java.util.Properties;
+
+public class ConnectionPropertiesUtil {
+	
+	
+	public static void getConnectionProperties() {
+		
+		
+		Properties properties = new Properties();
+		
+		properties.setProperty(null, null);
+	}
+
+}

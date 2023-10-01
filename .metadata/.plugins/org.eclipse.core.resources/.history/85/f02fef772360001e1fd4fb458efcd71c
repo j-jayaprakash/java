@@ -1,0 +1,5 @@
+package com.jp.ums.util;
+
+public class ConnectionPropertiesUtil {
+
+}

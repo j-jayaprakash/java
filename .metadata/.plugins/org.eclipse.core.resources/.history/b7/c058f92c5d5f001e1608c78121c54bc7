@@ -1,0 +1,19 @@
+package com.jp.ums;
+
+
+import com.jp.ums.dto.User;
+
+
+public class App 
+{
+    public static void main( String[] args )
+
+    {
+    	
+    	User u1 = new User();
+    	
+    	u1.setName("jayaprakash");
+    	u1.setEmail("jayaprakash@gmail.com");
+    	
+    }
+}

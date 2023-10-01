@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.jp.calculator.NumericalUtil"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="com.jp.ums.dto.User"/>
+    <fullyQualifiedTypeName name="com.jp.ums.dao.UserDao"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="com.jp.ums.dao.UserImpl"/>
+</qualifiedTypeNameHistroy>
