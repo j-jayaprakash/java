@@ -3,23 +3,14 @@ package com.jp.ums.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
 import com.jp.ums.dto.RegisterDto;
 import com.jp.ums.entity.Register;
-import com.jp.ums.util.ConnectionPropertiesUtil;
+import com.jp.ums.util.SessonFactoryGenarator;
 
 public class UserRegisterImpl implements UserRegister {
 
 	private Session getSesson() {
-
-		Configuration config = new Configuration();
-
-		config.setProperties(ConnectionPropertiesUtil.getConnectionProperties());
-		config.addAnnotatedClass(Register.class);
-
-		SessionFactory sf = config.buildSessionFactory();
-
+		SessionFactory sf = SessonFactoryGenarator.getSessionFactory();
 		Session sesson = sf.openSession();
 		return sesson;
 
@@ -34,7 +25,7 @@ public class UserRegisterImpl implements UserRegister {
 		register.setEmail(rdto.getEmail());
 		register.setFirstName(rdto.getFirstName());
 		register.setPinCode(rdto.getPinCode());
-		
+
 		Session sesson = getSesson();
 		Transaction st = sesson.beginTransaction();
 
