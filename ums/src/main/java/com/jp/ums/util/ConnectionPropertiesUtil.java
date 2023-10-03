@@ -20,6 +20,11 @@ public class ConnectionPropertiesUtil {
 		
 		properties.setProperty(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
 		
+		properties.setProperty(Environment.HBM2DDL_AUTO,"update");
+		
+		properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+		
+		properties.setProperty(Environment.SHOW_SQL, "true");
 		
 		return properties;
 	}

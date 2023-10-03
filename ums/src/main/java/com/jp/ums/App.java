@@ -21,17 +21,26 @@ public class App
 //    	
 //    	new UserImpl().createUser(u1);
     	
-    	RegisterDto user = new RegisterDto();
-    	
-    	user.setCity("banglore");
-    	user.setContactNumber("987643210");
-    	user.setEmail("jayaprakash@gmail.com");
-    	user.setFirstName("jayaprakash");
-    	user.setPinCode("560037");
-    	
-    	
-    UserRegisterImpl uri = new	UserRegisterImpl();
+//    	RegisterDto user = new RegisterDto();
+//    	
+//    	user.setCity("banglore");
+//    	user.setContactNumber("987643210");
+//    	user.setEmail("jayaprakash@gmail.com");
+//    	user.setFirstName("jayaprakash");
+//    	user.setPinCode("560037");
+//    	
+//    	
+//    UserRegisterImpl uri = new	UserRegisterImpl();
+//    
+//    uri.saveRegisterInfo(user);
+//    
     
-    uri.saveRegisterInfo(user);
+    UserRegisterImpl userRegImp = new UserRegisterImpl();
+    
+    
+    System.out.println(userRegImp.updateRegisterInfo(1, "9876543212", "prakash@gmail.com"));
+    
+    
+    
     }
 }

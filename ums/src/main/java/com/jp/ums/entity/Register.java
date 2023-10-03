@@ -4,14 +4,19 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="register_info")
 public class Register implements Serializable {
 
 	@Id
+	@GenericGenerator(name="reg_auto",strategy = "increment")
+	@GeneratedValue(generator="reg_auto")
 	@Column(name="alt_key")
 	private long altKey;
 	@Column(name="first_name")

@@ -11,9 +11,23 @@ import com.jp.ums.util.ConnectionPropertiesUtil;
 
 public class UserRegisterImpl implements UserRegister {
 
+	private Session getSesson() {
+
+		Configuration config = new Configuration();
+
+		config.setProperties(ConnectionPropertiesUtil.getConnectionProperties());
+		config.addAnnotatedClass(Register.class);
+
+		SessionFactory sf = config.buildSessionFactory();
+
+		Session sesson = sf.openSession();
+		return sesson;
+
+	}
+
 	@Override
 	public void saveRegisterInfo(RegisterDto rdto) {
-		
+
 		Register register = new Register();
 		register.setCity(rdto.getCity());
 		register.setContactNumber(rdto.getContactNumber());
@@ -21,23 +35,41 @@ public class UserRegisterImpl implements UserRegister {
 		register.setFirstName(rdto.getFirstName());
 		register.setPinCode(rdto.getPinCode());
 		
-		
-		Configuration config = new Configuration();
-		
-		config.setProperties(ConnectionPropertiesUtil.getConnectionProperties());
-		config.addAnnotatedClass(Register.class);
-		
-		SessionFactory sf = config.buildSessionFactory();
-		
-		Session sesson = sf.openSession();
-		
+		Session sesson = getSesson();
 		Transaction st = sesson.beginTransaction();
-		
+
 		sesson.save(register);
-		
 		st.commit();
-		
-		
+	}
+
+	@Override
+	public Register getUserById(long altKey) {
+
+		Register user = getSesson().find(Register.class, altKey);
+
+		return user;
+
+	}
+
+	@Override
+	public boolean updateRegisterInfo(long altKey, String phone, String email) {
+
+		Register user = getUserById(altKey);
+
+		if (user != null) {
+			user.setEmail(email);
+			user.setContactNumber(phone);
+
+			Session sesson = getSesson();
+
+			Transaction st = sesson.beginTransaction();
+			sesson.merge(user);
+			st.commit();
+			return true;
+
+		}
+
+		return false;
 	}
 
 }
