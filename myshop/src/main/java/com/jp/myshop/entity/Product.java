@@ -71,4 +71,12 @@ public class Product {
 		this.modifiedDate = modifiedDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [altKey=" + altKey + ", name=" + name + ", price=" + price + ", createdDate=" + createdDate
+				+ ", modifiedDate=" + modifiedDate + "]";
+	}
+	
+	
+
 }

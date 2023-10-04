@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.jp.myshop.entity.Product;
+import com.jp.myshop.entity.SoldItemInfo;
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
 public class SessonFactoryOrder {
@@ -17,7 +18,7 @@ public class SessonFactoryOrder {
 
 			Configuration config = new Configuration();
 			config.setProperties(ConnectionProperties.getConnectionProperties());
-			config.addAnnotatedClass(Order.class);
+			config.addAnnotatedClass(SoldItemInfo.class);
 			sf = config.buildSessionFactory();
 
 		}

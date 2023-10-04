@@ -77,4 +77,12 @@ public class SoldItemInfo {
 		this.createdDate = createdData;
 	}
 
+	@Override
+	public String toString() {
+		return "SoldItemInfo [altKey=" + altKey + ", productId=" + productId + ", quantity=" + quantity
+				+ ", totalPrice=" + totalPrice + ", purchaseId=" + purchaseId + ", createdDate=" + createdDate + "]";
+	}
+	
+	
+
 }

@@ -1,5 +1,6 @@
 package com.jp.myshop;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.jp.myshop.dao.MyshopDaoImpl;
@@ -13,25 +14,25 @@ public class App {
 
 		System.out.println("Wellcome to MyShop ");
 		
-		for(int i=0;i<10;i++) {
-
-    	ProductDto product = new ProductDto();
-    	
-    	System.out.println("enter product name");
-    	product.setName(scn.next());
-    	System.out.println("enter price of the Product");
-    	product.setPrice(scn.nextInt());
-    	
-    	System.out.println("enter quantity available");
-    	product.setQuantity(scn.nextInt());
-    		
-    	
+//		for(int i=0;i<10;i++) {
+//
+//    	ProductDto product = new ProductDto();
+//    	
+//    	System.out.println("enter product name");
+//    	product.setName(scn.next());
+//    	System.out.println("enter price of the Product");
+//    	product.setPrice(scn.nextInt());
+//    	
+//    	System.out.println("enter quantity available");
+//    	product.setQuantity(scn.nextInt());
+//    		
+//    	
     	MyshopDaoImpl ms=new MyshopDaoImpl();
-    	
-    	ms.addProduct(product);
-
-    	
-		}
+//    	
+//    	ms.addProduct(product);
+//
+//    	
+//		}
     	
 		OrderDto order1 = new OrderDto();
 
@@ -42,6 +43,15 @@ public class App {
 
 		order2.setProductId(2);
 		order2.setQuantity(1);
-
+		
+		ArrayList<OrderDto> list = new ArrayList<OrderDto>();
+		list.add(order1);
+		
+		list.add(order2);
+		
+		ms.sellItem(list);
+		
+		
+		ms.getSoldProductForCurrentDate(1);
 	}
 }

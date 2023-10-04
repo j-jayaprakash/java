@@ -46,4 +46,10 @@ public class StockInfo {
 		this.stockNumber = stockNumber;
 	}
 
+	@Override
+	public String toString() {
+		return "StockInfo [altKey=" + altKey + ", productId=" + productId + ", stockNumber=" + stockNumber + "]";
+	}
+
+	
 }
