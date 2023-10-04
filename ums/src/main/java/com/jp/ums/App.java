@@ -38,7 +38,13 @@ public class App
     UserRegisterImpl userRegImp = new UserRegisterImpl();
     
     
-    System.out.println(userRegImp.updateRegisterInfo(1, "9876543212", "prakash@gmail.com"));
+//    System.out.println(userRegImp.updateRegisterInfo(1, "9876543212", "prakash@gmail.com"));
+    
+
+//   userRegImp.display( userRegImp.findAll());
+    
+    
+    userRegImp.display( userRegImp.findByCity("banglore"));
     
     
     

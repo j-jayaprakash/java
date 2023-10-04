@@ -1,8 +1,12 @@
 package com.jp.ums.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import com.jp.ums.dto.RegisterDto;
 import com.jp.ums.entity.Register;
 import com.jp.ums.util.SessonFactoryGenarator;
@@ -63,4 +67,48 @@ public class UserRegisterImpl implements UserRegister {
 		return false;
 	}
 
+	
+	public void deleteRegister(long altKey) {
+		
+		Session sesson = SessonFactoryGenarator.getSessionFactory().openSession();
+		Register reg=getUserById(altKey);
+		sesson.remove(reg);
+	}
+
+	@Override
+	public List<Register> findAll() {
+		
+		Session sesson = SessonFactoryGenarator.getSessionFactory().openSession();
+		StringBuilder sb = new StringBuilder();
+		sb.append("from Register");
+	
+		
+		Query q=sesson.createQuery(sb.toString());
+		
+		return q.getResultList();
+	}
+	
+	
+	public void display(List<Register> register) {
+		
+		for (Register register2 : register) {
+			
+			System.out.println(register2);
+			
+		}
+	}
+
+	@Override
+	public List<Register> findByCity(String city) {
+		Session sesson = SessonFactoryGenarator.getSessionFactory().openSession();
+		StringBuilder sb = new StringBuilder();
+		sb.append("from Register where city =:c");
+		
+		
+		Query q=sesson.createQuery(sb.toString());
+		q.setParameter("c", city);
+		
+		return q.getResultList();
+	}
+	
 }
