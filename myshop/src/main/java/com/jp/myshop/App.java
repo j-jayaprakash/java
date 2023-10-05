@@ -36,13 +36,15 @@ public class App {
     	
 		OrderDto order1 = new OrderDto();
 
-		order1.setProductId(1);
+		order1.setProductId(5);
 		order1.setQuantity(2);
 
 		OrderDto order2 = new OrderDto();
 
-		order2.setProductId(2);
-		order2.setQuantity(1);
+		order2.setProductId(3);
+		order2.setQuantity(4);
+		
+		
 		
 		ArrayList<OrderDto> list = new ArrayList<OrderDto>();
 		list.add(order1);

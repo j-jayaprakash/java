@@ -11,7 +11,7 @@ public class SessonFactoryGenarator {
 	private static SessionFactory sf = null;
 	
 	
-	{
+	static{
 		
 		 			Configuration config = new Configuration();
 		 			config.setProperties(ConnectionPropertiesUtil.getConnectionProperties());

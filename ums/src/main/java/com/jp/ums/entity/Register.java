@@ -67,6 +67,11 @@ public class Register implements Serializable {
 	public void setPinCode(String pinCode) {
 		this.pinCode = pinCode;
 	}
+	@Override
+	public String toString() {
+		return "Register [altKey=" + altKey + ", firstName=" + firstName + ", email=" + email + ", city=" + city
+				+ ", contactNumber=" + contactNumber + ", pinCode=" + pinCode + "]";
+	}
 	
 	
 	

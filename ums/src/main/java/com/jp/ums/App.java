@@ -5,6 +5,7 @@ import com.jp.ums.dao.UserImpl;
 import com.jp.ums.dao.UserRegisterImpl;
 import com.jp.ums.dto.RegisterDto;
 import com.jp.ums.dto.User;
+import com.jp.ums.entity.Register;
 
 
 public class App 
@@ -44,7 +45,22 @@ public class App
 //   userRegImp.display( userRegImp.findAll());
     
     
-    userRegImp.display( userRegImp.findByCity("banglore"));
+//    userRegImp.display( userRegImp.findByCity("banglore"));
+    
+//    Register register = userRegImp.getByEmailPincode("prakash@gmail.com", "560037");
+//    
+//    System.out.println(register);
+    
+//    int updateRes = userRegImp.setByEmailPincodeCity("prakash@gmail.com", "560037","chennai");
+//    
+//    System.out.println(updateRes);
+    
+    
+    int deleteRes = userRegImp.deleteRegByEmail("prakash@gmail.com");
+    
+    System.out.println(deleteRes);
+    
+    
     
     
     

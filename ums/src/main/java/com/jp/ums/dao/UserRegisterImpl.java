@@ -67,34 +67,31 @@ public class UserRegisterImpl implements UserRegister {
 		return false;
 	}
 
-	
 	public void deleteRegister(long altKey) {
-		
+
 		Session sesson = SessonFactoryGenarator.getSessionFactory().openSession();
-		Register reg=getUserById(altKey);
+		Register reg = getUserById(altKey);
 		sesson.remove(reg);
 	}
 
 	@Override
 	public List<Register> findAll() {
-		
+
 		Session sesson = SessonFactoryGenarator.getSessionFactory().openSession();
 		StringBuilder sb = new StringBuilder();
 		sb.append("from Register");
-	
-		
-		Query q=sesson.createQuery(sb.toString());
-		
+
+		Query q = sesson.createQuery(sb.toString());
+
 		return q.getResultList();
 	}
-	
-	
+
 	public void display(List<Register> register) {
-		
+
 		for (Register register2 : register) {
-			
+
 			System.out.println(register2);
-			
+
 		}
 	}
 
@@ -103,12 +100,63 @@ public class UserRegisterImpl implements UserRegister {
 		Session sesson = SessonFactoryGenarator.getSessionFactory().openSession();
 		StringBuilder sb = new StringBuilder();
 		sb.append("from Register where city =:c");
-		
-		
-		Query q=sesson.createQuery(sb.toString());
+
+		Query q = sesson.createQuery(sb.toString());
 		q.setParameter("c", city);
-		
+
 		return q.getResultList();
 	}
-	
+
+	@Override
+	public Register getByEmailPincode(String email, String pincode) {
+
+		Session session = SessonFactoryGenarator.getSessionFactory().openSession();
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("from Register where email=:email and pinCode=:pc");
+
+		Query query = session.createQuery(sb.toString());
+
+		query.setParameter("email", email);
+		query.setParameter("pc", pincode);
+
+		return (Register) query.uniqueResult();
+	}
+
+	@Override
+	public int setByEmailPincodeCity(String email, String pincode, String city) {
+
+		Session session = SessonFactoryGenarator.getSessionFactory().openSession();
+		Transaction rt = session.beginTransaction();
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("update Register set email=:email,pinCode=:pc,city=:c where email=:email");
+
+		Query query = session.createQuery(sb.toString());
+
+		query.setParameter("email", email);
+		query.setParameter("pc", pincode);
+		query.setParameter("c", city);
+
+		int res = query.executeUpdate();
+
+		rt.commit();
+		return res;
+	}
+
+	@Override
+	public int deleteRegByEmail(String email) {
+		Session session = SessonFactoryGenarator.getSessionFactory().openSession();
+		Transaction rt = session.beginTransaction();
+		StringBuilder sb = new StringBuilder();
+		sb.append("delete from Register where email=:email");
+		Query query = session.createQuery(sb.toString());
+		query.setParameter("email", email);
+		int res = query.executeUpdate();
+		rt.commit();
+		return res;
+	}
+
 }

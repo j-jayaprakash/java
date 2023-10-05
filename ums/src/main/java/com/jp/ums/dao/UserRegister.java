@@ -23,6 +23,13 @@ public interface UserRegister {
 	
 	List<Register>  findByCity(String city);
 	
+	Register getByEmailPincode(String email,String pincode);
+	
+	int setByEmailPincodeCity(String email,String pincode,String city);
+	
+	int deleteRegByEmail(String email);
+	
+	
 
 
 }
