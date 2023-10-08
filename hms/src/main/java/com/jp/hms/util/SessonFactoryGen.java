@@ -17,6 +17,7 @@ public class SessonFactoryGen {
 		if (sf == null) {
 
 			Configuration config = new Configuration();
+			
 			config.setProperties(ConnectionProperties.getConnectionProperties());
 			config.addAnnotatedClass(User.class);
 			config.addAnnotatedClass(Doctor.class);

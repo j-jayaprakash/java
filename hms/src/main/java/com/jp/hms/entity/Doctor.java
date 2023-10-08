@@ -15,7 +15,7 @@ public class Doctor implements Serializable {
 	@Id
 	@GenericGenerator(name = "auto_gen", strategy = "increment")
 	@GeneratedValue(generator = "auto_gen")
-	private long id;
+	private int id;
 	private String name;
 	private String email;
 	private String conatact;
@@ -26,7 +26,7 @@ public class Doctor implements Serializable {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

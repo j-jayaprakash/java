@@ -18,7 +18,7 @@ public interface HospitalDao<T> {
 	
 	String bookAppointMent(AppoinmentDto appointmetDto);
 	
-	List getAllAppointmentOfADoctorByDate(Date date);
+	List getAllAppointmentOfADoctorByDate(int doctorId,Date date);
 
 	Object create(T obj);
 

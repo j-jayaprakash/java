@@ -67,10 +67,26 @@ public class HospitalDaoImpl<T> implements HospitalDao<T> {
 
 		Transaction transaction = session.beginTransaction();
 
-		List currentAppoinmments = getAllAppointmentOfADoctorByDate(appointmetDto.getAppointmentDate());
-		
+		List<Appointment> currentAppoinmments = getAllAppointmentOfADoctorByDate(appointmetDto.getDid(),
+				appointmetDto.getAppointmentDate());
 
 		if (currentAppoinmments.size() < 4) {
+
+			Doctor doc = session.find(Doctor.class, appointmetDto.getDid());
+
+			String[] availTime = doc.getAvailableTime().split(",");
+
+			for (String time : availTime) {
+				if (Integer.parseInt(time) == appointmetDto.getTime()) {
+
+					for (Appointment obj : currentAppoinmments) {
+
+						if (obj.getTime() == appointmetDto.getTime())
+							return "this time slat already booked select another slat";
+
+					}
+				}
+			}
 
 			Appointment appointment = new Appointment();
 
@@ -92,7 +108,7 @@ public class HospitalDaoImpl<T> implements HospitalDao<T> {
 	public int updateContactByEmail(String email, String contact) {
 
 		Session session = SessonFactoryGen.getSessionFactory().openSession();
-		
+
 		Transaction transaction = session.beginTransaction();
 
 		String s = "update User set contact=:con where email=:em";
@@ -103,7 +119,7 @@ public class HospitalDaoImpl<T> implements HospitalDao<T> {
 		q.setParameter("con", contact);
 
 		int res = q.executeUpdate();
-		
+
 		transaction.commit();
 
 		return res;
@@ -113,7 +129,7 @@ public class HospitalDaoImpl<T> implements HospitalDao<T> {
 	public int updateRemarksByPatientId(long patientId, String remarks) {
 
 		Session session = SessonFactoryGen.getSessionFactory().openSession();
-		
+
 		Transaction transaction = session.beginTransaction();
 
 		String s = "update Appointment set remark=:rem where id=:pid";
@@ -144,17 +160,54 @@ public class HospitalDaoImpl<T> implements HospitalDao<T> {
 	}
 
 	@Override
-	public List getAllAppointmentOfADoctorByDate(Date date) {
+	public List getAllAppointmentOfADoctorByDate(int doctorId, Date date) {
 
 		Session session = SessonFactoryGen.getSessionFactory().openSession();
 
-		String s = "from Appointment where appointmentDate=:ad";
+		String s = "from Appointment where appointmentDate=:ad and did=:docid";
 
 		Query q = session.createQuery(s);
 		q.setParameter("ad", date);
+		q.setParameter("docid", doctorId);
 		List resultList = q.getResultList();
 
 		return resultList;
+	}
+	
+	
+	
+	private boolean checkAvailablity(AppoinmentDto appointmentDet) {
+
+		List currentAppoinmments = getAllAppointmentOfADoctorByDate(appointmentDet.getDid(),
+				appointmentDet.getAppointmentDate());
+
+		if (currentAppoinmments.size() < 4) {
+
+			Doctor doc = SessonFactoryGen.getSessionFactory().openSession().find(Doctor.class, appointmentDet.getDid());
+
+			String[] availTime = doc.getAvailableTime().split(",");
+
+			for (String time : availTime) {
+
+				if (Integer.parseInt(time) == appointmentDet.getTime()) {
+					for (Object obj : currentAppoinmments) {
+
+						Appointment app = (Appointment) obj;
+
+						if (app.getTime() == appointmentDet.getTime()) {
+							System.out.println("time slat already booked");
+							return false;
+						}
+					}
+				}
+
+			}
+
+			System.out.println("for this day appointment is full");
+			return false;
+		}
+		return true;
+
 	}
 
 }

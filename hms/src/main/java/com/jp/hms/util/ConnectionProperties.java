@@ -23,7 +23,7 @@ public class ConnectionProperties {
 		
 		properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
 		
-		properties.setProperty(Environment.SHOW_SQL, "true");
+//		properties.setProperty(Environment.SHOW_SQL, "true");
 		
 		return properties;
 	}

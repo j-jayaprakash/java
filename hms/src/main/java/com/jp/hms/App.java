@@ -25,78 +25,77 @@ public class App {
 		// insert doctor
 		DoctorDto doctor = new DoctorDto();
 
-		doctor.setName("prakash");
-		doctor.setConatact("9876543210");
-		doctor.setEmail("prakash@outlook.com");
-		doctor.setType("general");
-		doctor.setAvailableTime("10,12");
-		
+		doctor.setName("vinay");
+		doctor.setConatact("7894543210");
+		doctor.setEmail("vinay@outlook.com");
+		doctor.setType("cardio");
+		doctor.setAvailableTime("11,9,1,3");
+
+		Object docRes = doctorImpl.create(doctor);
+
 		System.out.println("==============================================================");
 
-		System.out.println(
+		System.out.println("doctor object saved successfully " + docRes);
 
-				doctorImpl.create(doctor)
-
-		);
 		System.out.println("==============================================================");
 
 		// inser user
 
 		UserDto user = new UserDto();
 
-		user.setName("dharani");
-		user.setEmail("dharani@outlook.com");
-		user.setContact("679023457");
-		
-		
-		System.out.println("==============================================================");
-		System.out.println(
+		user.setName("Ganesh");
+		user.setEmail("Ganesh@outlook.com");
+		user.setContact("889023457");
 
-				userImpl.create(user)
+		Object userObj = userImpl.create(user);
 
-		);
 		System.out.println("==============================================================");
-		
+		System.out.println("User Object saved successfully "+ userObj);
+
+		System.out.println("==============================================================");
+
+		// Booking Appointment
 		AppoinmentDto appointment = new AppoinmentDto();
-		
-		Date date=new SimpleDateFormat("dd-MM-yyyy").parse("07-10-2023");
+
+		Date date = new SimpleDateFormat("dd-MM-yyyy").parse("08-10-2023");
 		appointment.setAppointmentDate(date);
-		appointment.setDid(1);
+		appointment.setDid(2);
 		appointment.setPid(1);
-		appointment.setRemark(null);
-		
-		
+		appointment.setRemark("fever");
+		appointment.setTime(2);
+
 		String appointmentres = genImpl.bookAppointMent(appointment);
-		
+
 		System.out.println("==============================================================");
 
-		System.out.println(appointmentres);
-		
+		System.out.println("Appointment status "+ appointmentres);
+
 		System.out.println("==============================================================");
 		
 		
-		List allAppointmentOfADoctorByDate = userImpl.getAllAppointmentOfADoctorByDate(date);
-		
+		//Get Appointment Details by DoctorID in Date
+		List allAppointmentOfADoctorByDate = userImpl.getAllAppointmentOfADoctorByDate(1, date);
+
 		for (Object object : allAppointmentOfADoctorByDate) {
-			
+
 			System.out.println(object);
-			
+
 		}
+
 		
-		
+		//Update User Contact By Email
 		int updateContactByEmail = genImpl.updateContactByEmail("dharani@outlook.com", "764321876");
-		
+
 		System.out.println("==============================================================");
-		
-		System.out.println(updateContactByEmail);
-		
+
+		System.out.println( updateContactByEmail + " user Record Updated");
+
 		System.out.println("==============================================================");
+
+		//Update Remarks by PatientId
+		int updateRemarksByPatientId = genImpl.updateRemarksByPatientId(1, "cold");
 		
-		
-		genImpl.updateRemarksByPatientId(1, "cold");
-		
-		
-		
-		
+		System.out.println(updateRemarksByPatientId + " record got updated");
+
 	}
 }

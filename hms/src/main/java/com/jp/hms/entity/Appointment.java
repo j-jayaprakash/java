@@ -21,6 +21,7 @@ public class Appointment  implements Serializable{
 	private int did;
 	private Date appointmentDate;
 	private String remark;
+	private int time;
 
 	public long getId() {
 		return id;
@@ -69,6 +70,14 @@ public class Appointment  implements Serializable{
 
 	public void setAppointmentDate(Date appointmentDate) {
 		this.appointmentDate = appointmentDate;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
 	}
 
 }

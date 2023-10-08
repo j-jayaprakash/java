@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Jp workspace\java\ums\src\main\java\com\jp\ums\dao\UserRegisterImpl.java"/>
 			<item value="C:\JP Workspace\Java\calculator\src\org\jp\calculator\NumericalUtil.java"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -26,12 +27,20 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.jp.hms"/>
+			<item value="com.jp.hibernate_mapping"/>
+			<item value="com.jp.app"/>
+			<item value="com.jp.myshop"/>
 			<item value="com.jp.ums"/>
 		</list>
 		<list key="groupId">
 			<item value="com.jp"/>
 		</list>
 		<list key="artifactId">
+			<item value="hms"/>
+			<item value="hibernate-mapping"/>
+			<item value="app"/>
+			<item value="myshop"/>
 			<item value="ums"/>
 		</list>
 		<list key="projectNameTemplate">

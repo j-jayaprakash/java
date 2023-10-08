@@ -10,6 +10,8 @@ public class AppoinmentDto {
 	private int did;
 	private Date appointmentDate;
 	private String remark;
+	private int time;
+	
 	
 	
 	public int getPid() {
@@ -36,6 +38,12 @@ public class AppoinmentDto {
 	}
 	public void setAppointmentDate(Date appointmentDate) {
 		this.appointmentDate = appointmentDate;
+	}
+	public int getTime() {
+		return time;
+	}
+	public void setTime(int time) {
+		this.time = time;
 	}
 	
 	

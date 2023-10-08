@@ -88,11 +88,9 @@ public class UserRegisterImpl implements UserRegister {
 
 	public void display(List<Register> register) {
 
-		for (Register register2 : register) {
-
-			System.out.println(register2);
-
-		}
+		register.forEach((each) -> {
+			System.out.println(each);
+		});
 	}
 
 	@Override
